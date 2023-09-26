@@ -24,7 +24,13 @@ public class AnimalArena {
         fight(tiger, trex);
 
     }
-
+    public static void pause(int milliseconds){
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
     /**
      * this method creates an animal and demonstrates the use of setters
      * @return
