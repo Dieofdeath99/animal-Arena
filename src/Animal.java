@@ -1,3 +1,4 @@
+import java.util.Random;
 public class Animal {
     private String type;
     private int strength; //max strength/damage the animal can inflict
@@ -5,6 +6,7 @@ public class Animal {
 
     private static final int MINSTRENGTH = 1;
     private static final int MINHEALTH = 0;
+    private static Random rand = new Random();
 
     /**
      * Default constructor. Called at instantiation with Animal mayAnimal = new Animal();
@@ -77,5 +79,11 @@ public class Animal {
         } else {
             return false;
         }
+    }
+    public int attack(){
+        return rand.nextInt(getStrength() + 1);
+    }
+    public AnimalAttack detailedAttack(){
+        return new AnimalAttack("attacks", attack());
     }
 }

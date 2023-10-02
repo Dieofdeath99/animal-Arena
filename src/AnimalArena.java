@@ -14,7 +14,9 @@ public class AnimalArena {
         testAnimal.type = "This is invalid because type is private";
         testAnimal.stength = 1000000; //Again, this is invalid because strength is private
         */
-        Animal tiger = createAnimalWithDefaultConstructor("Tiger");
+        int health = rand.nextInt(MAXHEALTH/2) + 11; //will give us a random number between 1 and max health
+        int strength = rand.nextInt(MAXSTRENGTH) + 1;
+        Animal tiger = new Mammal("Tiger", strength, health); //Polymorphism
 
         Animal trex = createAnimalWithParameterizedConstructor("TRex");
 
@@ -52,7 +54,14 @@ public class AnimalArena {
     }
 
     public static void animalAttack(Animal attacker, Animal defender){
-        int attack = rand.nextInt(attacker.getStrength());
+        int attack;
+        if(attacker instanceof Mammal) {//Note: INSTANCEOF!!!!!! Even though we know it's an animal it could be a mammal
+            AnimalAttack a = attacker.detailedAttack();
+            attack = a.getDamage();
+            System.out.println(ConsoleColors.RED + attacker.getType() + " attacks with " + a.getAttackType() + ConsoleColors.RESET);
+        }else{
+            attack = attacker.attack();
+        }
         System.out.println(attacker.getType() + " attacks " + defender.getType() + " delivering " + attack + " damage");
         defender.setHealth(defender.getHealth() - attack);
         System.out.println(defender.getType() + " has " + defender.getHealth() + " health remaining");
