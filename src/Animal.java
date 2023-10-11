@@ -4,7 +4,7 @@ public class Animal {
     private int strength; //max strength/damage the animal can inflict
     private int health; //the stuff that keeps the animal alive
 
-    private static final int MINSTRENGTH = 1;
+    private static final int MINSTRENGTH = 0;
     private static final int MINHEALTH = 0;
     private static Random rand = new Random();
 
