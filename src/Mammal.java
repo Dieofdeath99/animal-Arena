@@ -25,6 +25,10 @@ public class Mammal extends Animal{ //the keyword extends means it inherits ever
         LastAttack = attacks[attackNum];
         return attacks[attackNum];
     }
+    @Override
+    public String toString(){
+        return super.toString() + " : Mammal";
+    }
 }
 
 

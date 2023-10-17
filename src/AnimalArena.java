@@ -1,5 +1,5 @@
 import java.util.Random;
-
+import java.util.concurrent.ThreadLocalRandom;
 public class AnimalArena {
     /* This will be the code that pits animals against each other, and eventually is arrested by PETA and co. */
     public static Random rand = new Random();
@@ -26,13 +26,7 @@ public class AnimalArena {
         fight(tiger, trex);
 
     }
-    public static void pause(int milliseconds){
-        try {
-            Thread.sleep(milliseconds);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
     /**
      * this method creates an animal and demonstrates the use of setters
      * @return
@@ -48,7 +42,7 @@ public class AnimalArena {
     }
 
     public static Animal createAnimalWithParameterizedConstructor(String animalName){
-        int health = rand.nextInt(MAXHEALTH/2) + 11; //will give us a random number between 1 and max health
+        int health = ThreadLocalRandom.current().nextInt(10, 21); //will give us a random number between 1 and max health
         int strength = rand.nextInt(MAXSTRENGTH) + 1;
         return new Animal(animalName, strength, health);
     }
